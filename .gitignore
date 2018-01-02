@@ -474,3 +474,4 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+/codealike.json
