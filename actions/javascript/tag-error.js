@@ -1,9 +1,9 @@
 /**
- * Represents an error from an incorrect attribute value
+ * Represents an error from an incorrect tag
  */
-class AttributeError extends Error {
+class TagError extends Error {
     /**
-     * Creates a new instance of AttributeError with the specified message
+     * Creates a new instance of TagError with the specified message
      * @param {string?} message
      */
     constructor(message) {

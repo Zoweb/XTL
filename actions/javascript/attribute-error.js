@@ -1,7 +1,12 @@
 /**
- * Copyright (c) 2018, zoweb
- *
- * See the license in the LICENSE file (downloaded with this repository, in the root folder)
- * By using this code, you agree to the license in the file specified (the MIT license)
+ * Represents an error from an incorrect attribute value
  */
-
+class AttributeError extends Error {
+    /**
+     * Creates a new instance of AttributeError with the specified message
+     * @param {string?} message
+     */
+    constructor(message) {
+        super(message);
+    }
+}

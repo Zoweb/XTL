@@ -1,17 +1,16 @@
 /**
- * Define a variable, named from key, as value. Variable is a single-child tag where the first child's value attribute
- * is the value. Use define again to overwrite.
+ * Defines a variable named from value, with children as specified.
  *
  * @param tag - The current tag
  * @param args - A dictionary of the arguments
  * @param children - A list of the children
  */
-function defineAction(tag, args, children) {
-    if (typeof args.key === "undefined" || typeof args.value === "undefined") throw new TagError("Invalid `define` tag");
+function mixAction(tag, args, children) {
+    if (typeof args.value === "undefined") throw new TagError("Invalid `mix` tag");
 
-    let tag = new Tag(args.key, {
-        value: args.value
-    });
+    let tag = new Tag(args.key, children);
 
     tag.meta.defineTempConstantAction(tag);
+
+    return [];
 }

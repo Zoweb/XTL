@@ -12,14 +12,14 @@ if (!String.prototype.repeat) String.prototype.repeat = count => {
 };
 
 /**
- * Run an operation on key, using with otherkey's value. See operations section below. Note: overwrites variable.
+ * Run an operation on key, using with otherkey's value. See operations section below.
  *
  * @param tag - The current tag
  * @param args - A dictionary of the arguments
  * @param children - A list of the children
  */
-function calcAction(tag, args, children) {
-    if (typeof args.key === "undefined") throw new TagError("Invalid `calc` tag");
+function eqAction(tag, args, children) {
+    if (typeof args.key === "undefined") throw new TagError("Invalid `eq` tag");
 
     let newValue;
 
@@ -60,13 +60,11 @@ function calcAction(tag, args, children) {
                 newValue = args.key % args.otherkey;
                 break;
             default:
-                throw new TagError("Invalid `calc` tag");
+                throw new TagError("Invalid `eq` tag");
         }
     }
 
-    let tag = new Tag(args.key, {
-        value: newValue
-    });
+    tag.attributes.value = newValue;
 
-    tag.meta.defineTempConstantAction(tag);
+    return [];
 }
