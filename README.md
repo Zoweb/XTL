@@ -75,7 +75,7 @@ Target method format:
 //! BEGIN IMPORTS
 using ...;
 //! BEGIN DELEGATE
-delegate(Dictionary<string, object> args, Tag[] children)
+delegate(Tag tag, Dictionary<string, object> args, Tag[] children)
 {
     if (args.ContainsKey("foo"))
     {
@@ -94,7 +94,7 @@ delegate(Dictionary<string, object> args, Tag[] children)
 '! BEGIN IMPORTS
 Imports ...
 '! BEGIN DELEGATE
-Function(ByVal args As Dictionary(Of String, Object), ByVal children As Tag())
+Function(ByVal tag As Tag, ByVal args As Dictionary(Of String, Object), ByVal children As Tag())
     If args.ContainsKey("foo") Then
         Return children
     Else
@@ -105,7 +105,7 @@ End Function
 
 ##### JavaScript
 ```js
-function(args, children) {
+function(tag, args, children) {
     if (typeof args.foo !== "undefined") {
         return children;
     } else {
@@ -119,7 +119,7 @@ function(args, children) {
 //! BEGIN IMPORTS
 import ...;
 //! BEGIN DELEGATE
-(args, children) -> {
+(tag, args, children) -> {
     if (args.containsKey("foo")) {
         return children;
     } else {
@@ -140,13 +140,12 @@ The tag class. Stores information about a tag, including its name, args
     and children.
 
 ##### Fields:
- - `string Xtl.Tag#Name`: The tag's name.
- - `Dictionary<string, object> Xtl.Tag#Attributes`: Tag attributes.
+ - `string Name`: The tag's name.
+ - `Dictionary<string, object> Attributes`: Tag attributes.
     Value may be a string, number, boolean or `Xtl.Tag`.
- - `Xtl.Tag[] Xtl.Tag#Children`: The tag's children tags.
-
-##### Methods:
-This class has no methods
+ - `Xtl.Tag[] Children`: The tag's children tags.
+ - `Dictionary<string, object> CustomProperties`: Custom properties.
+ - `Xlt.TagMeta Meta`: Meta information.
 
 ##### Constructors
  - `Xtl.Tag(string name)`: Create an empty tag
@@ -156,3 +155,16 @@ This class has no methods
     specified children.
  - `Xtl.Tag(string name, Dictionary<string, object> attributes, Xtl.Tag[] children)`:
     Create a tag with children and attributes.
+
+#### `Xlt.TagMeta`
+
+Instances of this class contain meta information about a tag.
+
+##### Fields:
+ - `Tag PreviousTag`: The previous tag.
+ - `Tag NextTag`: The next tag.
+ - `Tag[] Tags`: A list of every tag.
+ - `int TagIndex`: The index of this tag in the `Tags` array.
+
+##### Methods:
+ - `void DefineTempConstantAction(Tag tag)`: Defines a new action.

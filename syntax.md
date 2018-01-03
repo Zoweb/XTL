@@ -150,7 +150,7 @@ boolean-eg[
 ]
 
 #mix["mixin"] {
-    mixin["hello", test=true]
+    a-mixin["hello", test=true]
 }
 #key-eg[
     $mixin // uses value attribute in $mixin's child
@@ -203,9 +203,9 @@ Note, you may add your own custom tag actions through the API, see
 
  - `define[str key, ? value]`:
     define a variable, named from `key`, as `value`. Variable is a
-    single-child tag where first child's `value` attribute is the value.
-    Use `define` again to overwrite.
- - `mixin[str value] { children }`:
+    tag where the `value` attribute is the value. Use `define` again to
+    overwrite.
+ - `mix[str value] { children }`:
     defines a variable named from `value`, with children as specified.
 
  - `calc[str key, str operation, str? otherkey]`:
