@@ -1,3 +1,5 @@
+const Tag = require("./tag");
+
 if (!String.prototype.repeat) String.prototype.repeat = count => {
     if (count < 1) return "";
 
@@ -18,7 +20,7 @@ if (!String.prototype.repeat) String.prototype.repeat = count => {
  * @param args - A dictionary of the arguments
  * @param children - A list of the children
  */
-function calcAction(tag, args, children) {
+module.exports = function calcAction(tag, args, children) {
     if (typeof args.key === "undefined") throw new TagError("Invalid `calc` tag");
 
     let newValue;
@@ -71,4 +73,4 @@ function calcAction(tag, args, children) {
     tag.meta.defineTempConstantAction(tag);
 
     return [];
-}
+};

@@ -1,3 +1,5 @@
+const TagError = require("./tag-error");
+
 if (!String.prototype.repeat) String.prototype.repeat = count => {
     if (count < 1) return "";
 
@@ -18,7 +20,7 @@ if (!String.prototype.repeat) String.prototype.repeat = count => {
  * @param args - A dictionary of the arguments
  * @param children - A list of the children
  */
-function eqAction(tag, args, children) {
+module.exports = function eqAction(tag, args, children) {
     if (typeof args.key === "undefined") throw new TagError("Invalid `eq` tag");
 
     let newValue;
@@ -67,4 +69,4 @@ function eqAction(tag, args, children) {
     tag.attributes.value = newValue;
 
     return [];
-}
+};

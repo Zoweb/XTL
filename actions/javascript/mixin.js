@@ -5,7 +5,7 @@
  * @param args - A dictionary of the arguments
  * @param children - A list of the children
  */
-function mixAction(tag, args, children) {
+module.exports = function mixAction(tag, args, children) {
     if (typeof args.value === "undefined") throw new TagError("Invalid `mix` tag");
 
     let tag = new Tag(args.key, children);
@@ -13,4 +13,4 @@ function mixAction(tag, args, children) {
     tag.meta.defineTempConstantAction(tag);
 
     return [];
-}
+};

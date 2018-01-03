@@ -1,7 +1,7 @@
 /**
  * Represents an error from an incorrect tag
  */
-class TagError extends Error {
+module.exports = class TagError extends Error {
     /**
      * Creates a new instance of TagError with the specified message
      * @param {string?} message
@@ -9,4 +9,4 @@ class TagError extends Error {
     constructor(message) {
         super(message);
     }
-}
+};

@@ -1,3 +1,5 @@
+const TagError = require("./tag-error");
+
 /**
  * Children are removed if comparison returns false.
  *
@@ -5,7 +7,7 @@
  * @param args - A dictionary of the arguments
  * @param children - A list of the children
  */
-function ifAction(tag, args, children) {
+module.exports = function ifAction(tag, args, children) {
     tag.customProperties.success = false;
 
     if (typeof args.left !== "undefined" && typeof args.right !== "undefined") {
@@ -40,4 +42,4 @@ function ifAction(tag, args, children) {
     }
 
     return tag.customProperties.success ? children : [];
-}
+};
