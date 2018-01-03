@@ -1,0 +1,11 @@
+{
+  "name": "XTL",
+  "version": "0.1.0",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^4.1.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}
