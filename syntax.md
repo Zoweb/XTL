@@ -51,17 +51,17 @@ However, if there is no arguments section, a tag name must be specified.
 If the tag will not have any children, this section can be skipped:
 
 ```xtl
-tag[args]
-other-tag[args]
+tag[args];
+other-tag[args];
 ```
 
-However, if there is neither arguments nor children, it looks unneat to
-    have just single words. In this case, the line must be terminated
-    with a `;`.
+However, if there are no children, it looks unneat to have just single
+    words (and arguments). In this case, the line must be terminated
+    with a `;`. [<sup>[1]</sup>](#citation-1)
 
 ```xtl
 tag;
-other-tag;
+other-tag[arguments];
 ```
 
 Individual Section Syntax
@@ -107,7 +107,11 @@ If a tag name starts with a hash (`#`), the tag value will be computed
     If the tag has a static value and static arguments, the hash is
     ignored.
 
-#### Inbuilt Tags
+If a tag name starts with `@`, it references a macro. Macros take in
+    parameters, then replace themselves with a new element. They are
+    always converted during compilation.
+
+#### Built-in Tags
 
 All tags of the target language, as well as:
 
@@ -118,6 +122,13 @@ All tags of the target language, as well as:
  - `calc`
  - `eq`
  - `attr-name`
+
+#### Built-in Macros
+
+ - `external-css`
+ - `google-font`
+ - `js`
+ - `image`
 
 ### Attributes <small>/ Arguments <small>/ Parameters <small>/ oh whatever</small></small></small>
 
@@ -135,12 +146,12 @@ If there is an attribute with a key `value`, it's key does not need to
 
 ```xtl
 string-eg[
-    "value attribute"
+    "value attribute",
     awesome="yes"
 ]
 
 number-eg[
-    1.2
+    1.2,
     awesome=6
 ]
 
@@ -152,10 +163,13 @@ boolean-eg[
 #mix["mixin"] {
     a-mixin["hello", test=true]
 }
+#define[key="test-var", "a test variable"];
 #key-eg[
     $mixin // uses value attribute in $mixin's child
     test=$mixin // uses test attribute in $mixin's child, as it exists
-    foo=$mixin // uses value attribute in $mixin's child, as foo attribute does not exist
+    foo=$mixin // uses value attribute in $mixin's child, as foo attribute does not exist,
+
+    bar=$test-var // From #define above. Note: #define does not generate a child.
 ]
 ```
 
@@ -165,7 +179,7 @@ Compiles to:
 <string-eg value="value attribute" awesome="yes" data-types="value=str,awesome=str" />
 <number-eg value="1.2" awesome="6" data-types="value=num,awesome=num" />
 <boolean-eg value="false" awesome="true" data-types="value=bool,awesome=bool" />
-<key-eg pregen value="hello" test="true" foo="hello" data-types="value=str,test=bool,foo=str" />
+<key-eg pregen value="hello" test="true" foo="hello" bar="hello" data-types="value=str,test=bool,foo=str,bar=str" />
 ```
 
 As shown above, single-child tags can be used as attribute values, where
@@ -191,7 +205,7 @@ These tags have actions specified by them. If they have a `#` symbol
     to compute the values in runtime.
 
 Note, you may add your own custom tag actions through the API, see
-[the API page](README.md#the-api).
+    [the API page](README.md#the-api).
 
  - `if[? left, str compare="=", ? right] { children }`:
     children are removed if comparison returns false.
@@ -215,6 +229,35 @@ Note, you may add your own custom tag actions through the API, see
     same as above but does not overwrite variable. Instead becomes a
     single-child tag, with the `value` attribute set to the result.
 
+### Default macros
+
+These are tags that start with `@`, and will be replaced by a new tag
+    during compilation. If a macro cannot be found with the specified
+    name, a `ReferenceError` will be thrown.
+
+Note, you may add your own custom macros through the API, see
+    [the API page](README.md#the-api).
+
+**Warning**: The default macros generate tags for use in the HTML
+    target. You may receive errors when running code with built-in
+    macros in other targets.
+
+ - `external-css[str value]`:
+    Generates a `link rel=stylesheet` tag with a `src` of `value`.
+ - `google-font[str value, str? weights]`:
+    Loads a Google Font stylesheet using `value` as the font's name
+    and `weights` as a comma-separated list of the weights to load.
+
+ - `js[str value]`:
+    Loads JavaScript code whose location is `value`. If a body is
+    supplied, this will be used as the generated `script` tag's body.
+
+ - `img[str value, boolean? preload]`:
+    Loads an image whose location is `value`. Width and height are
+    automatic. If `preload` is `true`, will preload the image and
+    generate base64 code for the source. When preloading, `value` must
+    be relative to the path that the compiler is executed in.
+
 ### Operations:
 
  - `+`: Adds the two sides together, or appends if one is not a number.
@@ -231,3 +274,7 @@ Note, you may add your own custom tag actions through the API, see
 
  - `++`: Adds one two the left side. Right side ignored.
  - `--`: Subtracts one from the left side. Right side ignored.
+
+---
+
+<a id="citation-1" />**<sup>1</sup>As well as parser issues**
