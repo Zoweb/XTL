@@ -2,8 +2,10 @@ eXtensible Tag Language (XTL)
 =============================
 A new way to write XML, but as a programming language!
 
-[![Build Status](https://travis-ci.org/Zoweb/XTL.svg?branch=develop)](https://travis-ci.org/Zoweb/XTL)
-
+[![Travis](https://img.shields.io/travis/Zoweb/XTL.svg?style=for-the-badge)]()
+[![GitHub issues](https://img.shields.io/github/issues/Zoweb/XTL.svg?style=for-the-badge)]()
+[![npm](https://img.shields.io/npm/v/xtl-lang.svg?style=for-the-badge)]()
+[![GitHub Release Date](https://img.shields.io/github/release-date/Zoweb/XTL.svg?style=for-the-badge)]()
 
 How It Works
 ------------
