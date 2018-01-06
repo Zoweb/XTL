@@ -1,0 +1,24 @@
+#define[key="mobile", true];
+
+html {
+    head {
+        @external-css["style.scss"];
+        @google-font["Encode Sans Expanded"];
+    }
+
+    body {
+        #if[$mobile] {
+            h1 <Welcome to the Example Mobile site!>
+        } else {
+            h1 <Welcome to the Example Desktop site!>
+        }
+
+        p <This is an amazing site.>
+        ^ [style="font-family: sans-serif"] <
+            Woah, this is multi-line!
+        >
+
+        // The below code will throw an error as there is no semicolon.
+        @js["code.js"];
+    }
+}

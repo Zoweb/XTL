@@ -2,8 +2,10 @@ eXtensible Tag Language (XTL)
 =============================
 A new way to write XML, but as a programming language!
 
-[![Build Status](https://travis-ci.org/Zoweb/XTL.svg?branch=master)](https://travis-ci.org/Zoweb/XTL)
-
+[![Travis](https://img.shields.io/travis/Zoweb/XTL.svg?style=for-the-badge)]()
+[![GitHub issues](https://img.shields.io/github/issues/Zoweb/XTL.svg?style=for-the-badge)]()
+[![npm](https://img.shields.io/npm/v/xtl-lang.svg?style=for-the-badge)]()
+[![GitHub Release Date](https://img.shields.io/github/release-date/Zoweb/XTL.svg?style=for-the-badge)]()
 
 How It Works
 ------------
@@ -24,8 +26,8 @@ XTL has tags called 'actions' that can run code depending on arguments.
 Targets
 -------
 
- - Compiler has not been created yet (only specification) so no there
-    are no targets
+ - Compiler has not been created yet (only parser) so there are not any
+    targets.
 
 ### Future Targets
 

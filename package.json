@@ -1,5 +1,5 @@
 {
-  "name": "XTL",
+  "name": "xtl-lang",
   "version": "0.1.0",
   "dependencies": {},
   "devDependencies": {
@@ -7,5 +7,7 @@
   },
   "scripts": {
     "test": "mocha --recursive"
-  }
+  },
+  "repository": "https://github.com/zoweb/xtl",
+  "license": "MIT"
 }
