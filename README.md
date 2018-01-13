@@ -1,11 +1,12 @@
+
 eXtensible Tag Language (XTL)
 =============================
 A new way to write XML, but as a programming language!
 
-[![Travis](https://img.shields.io/travis/Zoweb/XTL.svg?style=for-the-badge)]()
-[![GitHub issues](https://img.shields.io/github/issues/Zoweb/XTL.svg?style=for-the-badge)]()
-[![npm](https://img.shields.io/npm/v/xtl-lang.svg?style=for-the-badge)]()
-[![GitHub Release Date](https://img.shields.io/github/release-date/Zoweb/XTL.svg?style=for-the-badge)]()
+[![Travis](https://img.shields.io/travis/Zoweb/XTL.svg?style=for-the-badge)](https://travis-ci.org/Zoweb/XTL)
+[![GitHub issues](https://img.shields.io/github/issues/Zoweb/XTL.svg?style=for-the-badge)](https://github.com/Zoweb/XTL/issues)
+[![npm](https://img.shields.io/npm/v/xtl-lang.svg?style=for-the-badge)](https://npmjs.org/package/xtl-lang)
+[![GitHub Release Date](https://img.shields.io/github/release-date/Zoweb/XTL.svg?style=for-the-badge)](https://github.com/Zoweb/XTL/releases)
 
 How It Works
 ------------
@@ -173,3 +174,7 @@ Instances of this class contain meta information about a tag.
 
 ##### Methods:
  - `void DefineTempConstantAction(Tag tag)`: Defines a new action.
+
+License
+-------
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FZoweb%2FXTL.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FZoweb%2FXTL)
