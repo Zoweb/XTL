@@ -8,6 +8,42 @@ A new way to write XML, but as a programming language!
 [![npm](https://img.shields.io/npm/v/xtl-lang.svg?style=for-the-badge)](https://npmjs.org/package/xtl-lang)
 [![GitHub Release Date](https://img.shields.io/github/release-date/Zoweb/XTL.svg?style=for-the-badge)](https://github.com/Zoweb/XTL/releases)
 
+Example
+-------
+```xtl
+#define[key="mobile", true];
+
+html {
+    // Include some CSS
+    head {
+        @external-css["style.scss"] {}
+        @google-font["Encode Sans Expanded"];
+    }
+
+    body {
+        p <Hello World>
+        
+        // If we're mobile, display that we are. Otherwise display that we're desktop.
+        // Compile-time for testing.
+        #if[$mobile] {
+            h1 <Welcome to the Example Mobile site!>
+        } else {
+            h1 <Welcome to the Example Desktop site!>
+        }
+
+        p <This is an amazing site.>
+        ^ [style="font-family: sans-serif"] <
+            Woah, this is multi-line!
+        >
+
+        // The below code will throw an error as there is no semicolon.
+        @js["code.js"];
+
+        img;
+    }
+}
+```
+
 How It Works
 ------------
 
