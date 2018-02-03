@@ -1,13 +1,16 @@
-#define[key="mobile", true];
+#define[key="debug", true];
+define[key="mobile", true];
 
 html {
     head {
-        @external-css["style.scss"];
+        @external-css["style.scss"] {}
         @google-font["Encode Sans Expanded"];
     }
 
     body {
-        #if[$mobile] {
+        p <Hello World>
+
+        if[$mobile] {
             h1 <Welcome to the Example Mobile site!>
         } else {
             h1 <Welcome to the Example Desktop site!>
@@ -20,5 +23,7 @@ html {
 
         // The below code will throw an error as there is no semicolon.
         @js["code.js"];
+
+        img;
     }
 }
